@@ -19,7 +19,7 @@ class OrderService:
         await self._ensure_lock()  # Ensure lock exists before using it
 
         order = Order(
-            id=str(uuid.uuid4()),
+            id=str(uuid.uuid4().int)[:5],
             **order_data,
             timestamp=datetime.now()
         )
