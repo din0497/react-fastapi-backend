@@ -4,6 +4,7 @@ from datetime import datetime
 from enum import Enum
 
 class OrderStatus(str, Enum):
+    PENDING = "pending"
     RECEIVED = "received"
     PREPARING = "preparing"
     COMPLETED = "completed"
@@ -14,7 +15,7 @@ class OrderCreate(BaseModel):
 
 class Order(OrderCreate):
     id: str
-    status: OrderStatus = OrderStatus.RECEIVED
+    status: OrderStatus = OrderStatus.PENDING
     timestamp: datetime = Field(default_factory=datetime.now)
 
     class Config:

@@ -11,7 +11,6 @@ class OrderService:
         self._lock = None  # Delay Lock Initialization
 
     async def _ensure_lock(self):
-        """Ensure the lock is initialized in an async context."""
         if self._lock is None:
             self._lock = asyncio.Lock()
 
