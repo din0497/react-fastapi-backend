@@ -29,9 +29,8 @@ class Order(OrderCreate):
             }
         }
 
-    # Override dict method to ensure datetime fields are serialized properly
+
     def dict(self, *args, **kwargs):
         order_dict = super().dict(*args, **kwargs)
-        # Convert the datetime field to ISO format
         order_dict["timestamp"] = self.timestamp.isoformat() if self.timestamp else None
         return order_dict

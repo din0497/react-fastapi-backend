@@ -1,4 +1,4 @@
-# app/api/websocket/manager.py
+
 
 from fastapi import WebSocket
 from typing import Set
@@ -64,7 +64,5 @@ class ConnectionManager:
                 logger.info(f"Removed {len(inactive_connections)} inactive connections")
 
     async def process_message_queue(self):
-        # This method is now deprecated but kept for compatibility
-        # We're not using the queue anymore to avoid double broadcasts
         while True:
             await asyncio.sleep(1)

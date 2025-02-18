@@ -22,9 +22,9 @@ app.include_router(orders.router)
 
 @app.on_event("startup")
 async def startup_event():
-    # Start message queue processor
+
     connection_manager = orders.get_connection_manager()
-    asyncio.create_task(connection_manager.process_message_queue())  # Ensure the queue is processed in the background
+    asyncio.create_task(connection_manager.process_message_queue())
     logger.info("Message queue processor started.")
 
 if __name__ == "__main__":

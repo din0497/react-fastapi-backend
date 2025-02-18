@@ -8,7 +8,7 @@ from datetime import datetime
 class OrderService:
     def __init__(self):
         self.orders: List[Order] = []
-        self._lock = None  # Delay Lock Initialization
+        self._lock = None
 
     async def _ensure_lock(self):
         if self._lock is None:
@@ -16,7 +16,7 @@ class OrderService:
 
     async def create_order(self, order_data: dict) -> Order:
         print("#### Before adding order, orders list:", self.orders)
-        await self._ensure_lock()  # Ensure lock exists before using it
+        await self._ensure_lock()
 
         order = Order(
             id=str(uuid.uuid4().int)[:5],
@@ -51,7 +51,7 @@ class OrderService:
     async def get_order(self, order_id: str) -> Optional[Order]:
         return next((order for order in self.orders if order.id == order_id), None)
 
-# Singleton pattern: Ensure only one instance of OrderService is created.
+
 _order_service_instance = None
 
 def get_order_service():

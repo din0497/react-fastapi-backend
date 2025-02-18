@@ -10,7 +10,7 @@ import logging
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-# Create a shared instance of OrderService
+
 order_service_instance = OrderService()
 
 
@@ -94,7 +94,7 @@ async def websocket_endpoint(
     try:
         await connection_manager.connect(websocket)
 
-        # Send existing orders as a batch
+
         orders = await order_service.get_orders()
         await websocket.send_json({
             "type": "initial_orders",
